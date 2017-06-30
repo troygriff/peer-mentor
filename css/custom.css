@@ -1,0 +1,27 @@
+.modal-vertical-centered {
+	text-align:center;
+  transform: translate(0, 3%) !important;
+  -ms-transform: translate(0, 3%) !important; /* IE 9 */
+  -webkit-transform: translate(0, 3%) !important; /* Safari and Chrome */
+}
+
+.modal-dialog {
+	width:80%;
+}
+
+.in {
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-body{
+	padding-left: 10%;
+	padding-right: 10%;
+
+}
+
+.centered {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align:center;
+}

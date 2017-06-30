@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Medpal">
+      <meta name="author" content="Troy Griffiths">
+      <link rel="icon" href="http://getbootstrap.com/favicon.ico">
+      <title>Range Slider</title>
+      <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+      <link href="http://getbootstrap.com/examples/jumbotron/jumbotron.css" rel="stylesheet">
+      <link href="css/iThing.css" rel="stylesheet">
+      <link href="css/custom.css" rel="stylesheet">
+
+      <!--<link href="css/css.css" rel="stylesheet">-->
+
+      <!--??-->
+   <style type="text/css"></style>
+   </head>
+   <body>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-vertical-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h2 class="modal-title centered" id="myModalLabel">How to use</h2>
+      </div>
+      <div class="modal-body">
+          <p>Medpal is a tool to help social match­ing and peer men­tor­ship for cancer patients. User data is pulled from a database, parsed, and displayed via a word cloud representation. A slider changes content between the two selected dates. </p>
+      <h4>Enter a user ID (382) and click "search"</h4>
+                  <div class="form-group centered">
+                     <input type="text" placeholder="enter user ID" class="form-control" id="response">
+                     <!--onkeydown="if (event.keyCode == 13) document.getElementById('butt').click()"-->
+                  </div>
+                  <button id = "butt" type="button" class="btn btn-primary" data-dismiss="modal">Search</button>
+      <br><br><br><br>
+      <!--<img class="centered img-responsive"  src="img/search.png"><br><br><br><br><br>-->
+      <h2 class="centered">Features
+      <h4>In the browser, move the slider to change the time frame</h4>
+      <img class="centered img-responsive" src="img/slidersmall.png">
+      <img class="centered img-responsive" src="img/sliderbig.png"><br>
+      <h4>Toggle Health Interests</h4>
+      <img class=" centered img-responsive" src="img/radio.png"><br><br><br>
+     
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-success btn-lg" data-dismiss="modal">OK</button>
+
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+      <div class="navbar navbar-inverse navbar-fixed-top " role="navigation">
+         <div class="container-fluid container" id="navfluid">
+            <div class="navbar-header">
+               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               </button>
+                <ul class="nav navbar-nav navbar-right">
+                  <li style="font-size:40px;"><a
+   class="navbar-brand logo" 
+   href="/" 
+   style="font-size: 30px; color: white">
+   Peermentor
+</a></li>
+               </ul>
+            </div>
+            <div class="navbar-collapse collapse">
+               <div class="navbar-form navbar-right" role="form">
+                  <div class="form-group">
+                     <input type="text" placeholder="enter user ID" class="form-control" id="response">
+                     <!--onkeydown="if (event.keyCode == 13) document.getElementById('butt').click()"-->
+                  </div>
+                  <button id = "butt" type="button" class="btn btn-primary">Search</button>
+               </div>
+               <ul class="nav navbar-nav navbar-right">
+                  <li><a href="#" data-toggle="modal" data-target="#myModal">Help</a></li>
+               </ul>
+            </div><!--nav-->
+         </div><!--container-->
+      </div>
+
+
+
+
+      <div id = 'vis' style ="visibility: hidden">
+      <div class="container">
+      <div class="row">
+         <div class="col-md-3">
+            <br>
+            <div class = "well" style="padding-top: 0px; padding-bottom: 0px; text-align: center;">
+               <b style ="font-size: 150%">User: <span id="id"> </span></b><br>
+            </div>
+            <div class = "well">
+               <div id="random"> </div>
+            </div>
+            <div class = "well" style="text-align: center;">
+               <b>Word Cloud Options</b>
+               <div id = "options" class="checkbox" style="text-align: left;">
+                  <div class ="row">
+                     <div class="col-md-6">
+                        <label><input id="healthCheck" type="checkbox" value="" checked="checked">Health</label>
+                        <label><input id="treatmentCheck" type="checkbox" value="" checked="checked">Treatment</label>
+                     </div>
+                     <div class="col-md-6">
+                        <label><input class id="proceduresCheck" type="checkbox" value="" checked="checked">Procedures</label>
+                        <label> <input id="careCheck" type="checkbox" value="" checked="checked"> Care </label>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-9">
+            <br>
+            <div id="cloudDiv"> </div>
+            <br>
+            <div id ="slider"></div>
+         </div>
+      </div>
+      <h2>Health Interests</h2>
+      <div class = "well">
+         <div class="row" style ="height: 300px; overflow: scroll;">
+            <div class="col-md-3">
+               <div id ="h"></div>
+            </div>
+            <div class="col-md-3">
+               <div id="t"></div>
+            </div>
+            <div class="col-md-3">
+               <div id="p"></div>
+            </div>
+            <div class="col-md-3">
+               <div id="c"></div>
+            </div>
+         </div>
+      </div>
+      <h2>Discussion Posts</h2>
+      <div class = "well">
+         <div class="row" style ="height: 300px; overflow: scroll;">
+            <div id = "sliderPosts"></div>
+         </div>
+      </div>
+      <hr>
+      <footer>
+         <p>© MedPal 2014</p>
+      </footer>
+      <script src="https://code.jquery.com/jquery.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="http://128.208.102.175:3030/socket.io/socket.io.js"></script>
+      <script src="http://d3js.org/d3.v3.min.js"></script>
+      <script src="js/js.js"></script>
+      <script src="js/d3.layout.cloud.js"></script>
+      <script src="js/jquery-ui.js"></script>
+      <script src="js/jQAllRangeSliders-withRuler-min.js"></script>
+</body>
+</html>
